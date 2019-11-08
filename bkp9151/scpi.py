@@ -73,7 +73,7 @@ class ScpiConnection(object):
 
         sleep(float(self.post_command_delay / 1000.0))
         self.con.flush()
-        if command[-1] == '?':
+        if command.find('?') != -1:
             result = self.con.readline().decode('utf-8')
             if result != '':
                 return result.strip()
